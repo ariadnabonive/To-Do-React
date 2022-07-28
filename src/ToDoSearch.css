@@ -1,0 +1,24 @@
+.ToDoSearch {
+    background: white;
+    border-radius: 4px;
+    border: 2px solid #503459;
+    margin: 0 24px;
+    height: 50px;
+    width: calc(100% - 62px);
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    color:  #503459;
+    box-shadow: 0px 5px 25px rgba(179, 97, 250, 0.5);
+}
+
+.ToDoSearch::placeholder {
+    color: #dac9df;
+    font-family: 'Montserrat';
+    font-weight: 400;
+}
+
+.ToDoSearch:focus {
+    outline-color:#b695c0;
+}

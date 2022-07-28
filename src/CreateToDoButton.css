@@ -1,0 +1,25 @@
+.CreateToDoButton {
+    background-color: #81638b;
+    box-shadow: 0px 5px 25px rgba(179, 97, 250, 0.5);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 50px;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+
+    transform: rotate(0);
+    transition: .3s ease;
+  }
+  
+  .CreateToDoButton:hover {
+    transform: rotate(224deg);
+  }
