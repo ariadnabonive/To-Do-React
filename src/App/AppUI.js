@@ -1,44 +1,45 @@
-import React from "react";
+import React from 'react';
+//Importamos nuestro contexto
+import { ToDoContext } from '../ToDoContext';
 import { ToDoCounter } from '../ToDoCounter';
 import { ToDoSearch } from '../ToDoSearch';
 import { ToDoList } from '../ToDoList';
-import { ToDoItem } from '../ToDoItem/index.js';
-import { CreateToDoButton } from '../CreateToDoButton/index.js';
+import { ToDoItem } from '../ToDoItem';
+import { CreateToDoButton } from '../CreateToDoButton';
 
-function AppUI ({
-    completedTodos,
-    totalToDos,
-    searchValue,
-    setSearchValue,
-    searchedTodos,
-    completeTodo,
-    deleteTodo,
-}) {
-    
+function AppUI () {  
     return(
         <React.Fragment>
         {/* Pasamos el estado a nuestro componente */}
-        <ToDoCounter 
-        total={totalToDos}
-        completed={completedTodos}
-        />
+        <ToDoCounter />
+        <ToDoSearch />
   
-        <ToDoSearch 
-        searchValue = {searchValue}
-        setSearchValue = {setSearchValue}
-        />
-  
-        <ToDoList>
-          {searchedTodos.map(todo => (
-            <ToDoItem
-              key={todo.text}
-              text={todo.text}
-              completed={todo.completed}
-              onComplete={() => completeTodo(todo.text)}
-              onDelete={() => deleteTodo(todo.text)}
-            />
-          ))}
-        </ToDoList>
+        {/* Podemos acceder a nuestro contexto con el consumer */}
+        <ToDoContext.Consumer>
+        {({
+          error,
+          loading,
+          searchedTodos,
+          completeTodo,
+          deleteTodo,
+        }) => (
+          <ToDoList>
+            {error && <p>Desespérate, hubo un error...</p>}
+            {loading && <p>Estamos cargando, no desesperes...</p>}
+            {(!loading && !searchedTodos.length) && <p>¡Crea tu primer TODO!</p>}
+            
+            {searchedTodos.map(todo => (
+              <ToDoItem
+                key={todo.text}
+                text={todo.text}
+                completed={todo.completed}
+                onComplete={() => completeTodo(todo.text)}
+                onDelete={() => deleteTodo(todo.text)}
+              />
+            ))}
+          </ToDoList>
+        )}
+      </ToDoContext.Consumer>
 
         <CreateToDoButton />
       </React.Fragment>
