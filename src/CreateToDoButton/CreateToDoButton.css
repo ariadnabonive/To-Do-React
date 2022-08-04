@@ -15,9 +15,9 @@
     align-items: center;
     height: 60px;
     width: 60px;
-
     transform: rotate(0);
     transition: .3s ease;
+    z-index: 2; 
   }
   
   .CreateToDoButton:hover {

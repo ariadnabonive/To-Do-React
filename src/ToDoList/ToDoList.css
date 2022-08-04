@@ -1,14 +1,6 @@
-/* .ToDoList {
-    background-color:#dac9df;
-    border: none;
-    border-radius: 4px;
-    margin: 30px 24px;
-    width: calc(100% - 62px);
-    
-} */
-
 ul {
     margin: 0;
     padding: 0 0 56px 0;
     list-style: none;
+
 }

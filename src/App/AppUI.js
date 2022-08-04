@@ -5,28 +5,34 @@ import { ToDoCounter } from '../ToDoCounter';
 import { ToDoSearch } from '../ToDoSearch';
 import { ToDoList } from '../ToDoList';
 import { ToDoItem } from '../ToDoItem';
+import { ToDoForm } from '../ToDoForm';
 import { CreateToDoButton } from '../CreateToDoButton';
+import { Modal } from '../Modal';
+import { ToDosError } from '../ToDosError';
+import { ToDosLoading } from '../ToDosLoading';
+import { EmptyToDos } from '../EmptyToDos';
+
 
 function AppUI () {  
+    const {
+      error,
+      loading,
+      searchedTodos,
+      completeTodo,
+      deleteTodo,
+      openModal,
+      setOpenModal,
+    } = React.useContext(ToDoContext);
+
     return(
         <React.Fragment>
-        {/* Pasamos el estado a nuestro componente */}
-        <ToDoCounter />
-        <ToDoSearch />
-  
-        {/* Podemos acceder a nuestro contexto con el consumer */}
-        <ToDoContext.Consumer>
-        {({
-          error,
-          loading,
-          searchedTodos,
-          completeTodo,
-          deleteTodo,
-        }) => (
+          <ToDoCounter />
+          <ToDoSearch />
+        
           <ToDoList>
-            {error && <p>Desespérate, hubo un error...</p>}
-            {loading && <p>Estamos cargando, no desesperes...</p>}
-            {(!loading && !searchedTodos.length) && <p>¡Crea tu primer TODO!</p>}
+            {error && <ToDosError />}
+            {loading && <ToDosLoading /> }
+            {(!loading && !searchedTodos.length) && <EmptyToDos />}
             
             {searchedTodos.map(todo => (
               <ToDoItem
@@ -38,11 +44,17 @@ function AppUI () {
               />
             ))}
           </ToDoList>
-        )}
-      </ToDoContext.Consumer>
 
-        <CreateToDoButton />
-      </React.Fragment>
+          {!!openModal && (
+            <Modal>
+              <ToDoForm/>
+            </Modal>
+          )}
+  
+          <CreateToDoButton
+            setOpenModal = {setOpenModal} 
+          />
+        </React.Fragment>
     );
 }
 
