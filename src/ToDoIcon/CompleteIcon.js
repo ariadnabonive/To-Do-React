@@ -9,6 +9,6 @@ function CompleteIcon ({ completed, onComplete}) {
         onClick={onComplete}
         />
     );
-};
+};                                                                       
 
 export { CompleteIcon };
