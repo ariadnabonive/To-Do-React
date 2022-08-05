@@ -2,3 +2,10 @@
     text-align: center;
     margin-top: 48px;
 }
+
+.EmptyToDos-img {
+    margin: 0 24px;
+    height: calc(100% - 82px);
+    width: calc(100% - 62px);
+
+}
