@@ -7,7 +7,10 @@
     width: 48px;
     font-size: 24px;
     font-weight: bold;
-    color:#503459;
+    
+}
+.Icon-container svg {
+    fill:#503459;
 }
 .Icon-container--check{
     position: absolute;

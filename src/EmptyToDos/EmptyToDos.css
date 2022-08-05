@@ -4,8 +4,8 @@
 }
 
 .EmptyToDos-img {
-    margin: 0 24px;
-    height: calc(100% - 82px);
-    width: calc(100% - 62px);
-
+    margin: 80px 24px;
+    height: calc(100% - 100px);
+    width: calc(100% - 50px);
+    padding: 0;
 }

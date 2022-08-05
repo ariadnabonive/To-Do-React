@@ -1,31 +1,16 @@
 .LoadingTodo-Container{
-    position: relative;
+    background: linear-gradient(90deg, rgba(80,52,89,1) 0%, rgba(182,149,192,1) 35%, rgba(218,201,223,0.27494747899159666) 100%);
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 24px;
+    margin-top: 42px;
+    margin-left: 24px;
+    padding: 0;
+    border-radius: 4px;
     box-shadow: 0px 5px 25px rgba(179, 97, 250, 0.5);
-}
-.LoadingTodo-completeIcon,
-.LoadingTodo-deleteIcon{
-    border-radius: 50px;
-    height: 48px;
-    width: 48px;
-}
-.LoadingTodo-completeIcon{
-    position: absolute;
-    left: 12px;
-}
-.LoadingTodo-deleteIcon{
-    position: absolute;
-    top: -24px;
-    right: 0;
-}
-.LoadingTodo-Container,
-.LoadingTodo-completeIcon,
-.LoadingTodo-deleteIcon{
-    background: rgb(80,52,89);
-    background: linear-gradient(90deg, rgba(80,52,89,1) 0%, rgba(182,149,192,1) 35%, rgba(218,201,223,0.27494747899159666) 100%);
+    width: calc(100% - 58px);
+    font-weight: 700;
 }
 
 @keyframes loadingAnimation {

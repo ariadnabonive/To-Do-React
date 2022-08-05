@@ -31,6 +31,7 @@ textarea {
   height: 96px;
   width: calc(100% - 25px);
   resize: vertical;
+  font-family: 'Montserrat';
 }
 
 textarea::placeholder {

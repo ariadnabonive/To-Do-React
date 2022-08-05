@@ -9,9 +9,12 @@ function ToDoItem (props) {
             <CompleteIcon
                 completed={props.completed}
                 onComplete={props.onComplete}
+                // className={ '' &&'Icon-svg--check'}
+            
             />
             <p 
                 className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}
+                
             >
                 {props.text}
             </p>

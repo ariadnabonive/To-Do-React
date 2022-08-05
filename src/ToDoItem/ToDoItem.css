@@ -20,4 +20,5 @@
 }
 .TodoItem-p--complete {
   text-decoration: line-through;
+  color: white;
 }
