@@ -1,10 +1,7 @@
 import React from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
-// Al crear el contexto también podemos pasarle un valor inicial entre los paréntesis
-const  ToDoContext = React.createContext();
-
-function ToDoProvider (props) {
+function useToDos() {
 
     // Nos traemos todo el estado y las funciones de nuestra aplicación que queremos globales
     const {
@@ -26,9 +23,9 @@ function ToDoProvider (props) {
         searchedTodos = todos;
     } else {
         searchedTodos = todos.filter(todo => {
-        const todoText = todo.text.toLowerCase();
-        const searchText = searchValue.toLowerCase();
-        return todoText.includes(searchText);
+            const todoText = todo.text.toLowerCase();
+            const searchText = searchValue.toLowerCase();
+            return todoText.includes(searchText);
         });
     }
 
@@ -59,26 +56,22 @@ function ToDoProvider (props) {
     // Retornamos nuestro proveedor con nuestro contexto en la etiqueta value,
     // que recibirá a toda nuestra aplicación, por eso necesitamos la prop children
 
-    return(
-        <ToDoContext.Provider value={{
-            loading,
-            error,
-            totalToDos,
-            completedTodos,
-            searchValue,
-            setSearchValue,
-            searchedTodos,
-            addTodo,
-            completeTodo,
-            deleteTodo,
-            openModal,
-            setOpenModal,
-        }}>
-            {props.children}
-        </ToDoContext.Provider>
-    );
+    return {
+        loading,
+        error,
+        totalToDos,
+        completedTodos,
+        searchValue,
+        setSearchValue,
+        searchedTodos,
+        addTodo,
+        completeTodo,
+        deleteTodo,
+        openModal,
+        setOpenModal,
+    }
+    
 }
 
-// Exportamos nuestro proveedor y nuestro contexto, en el context también esta el consumer, para acceder a nuestro contexto
-export { ToDoContext, ToDoProvider };
-
+    // Exportamos nuestro proveedor y nuestro contexto, en el context también esta el consumer, para acceder a nuestro contexto
+    export { useToDos };
