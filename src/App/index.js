@@ -29,7 +29,7 @@ function App() {
   } = useToDos();
 
   return (
-    <>
+    <React.Fragment>
       <ToDoHeader>
         <ToDoCounter
           totalToDos={totalToDos}
@@ -41,22 +41,41 @@ function App() {
         />
       </ToDoHeader>
 
-      <ToDoList>
-        {error && <ToDosError />}
-        {loading && <ToDosLoading />}
-        {(!loading && !searchedTodos.length) && <EmptyToDos />}
+      <ToDoList
+        error={error}
+        loading={loading}
+        searchedTodos={searchedTodos}
+        searchText={searchValue}
+        totalToDos={totalToDos}
+        onError={() => <ToDosError />}
+        onLoading={() => <ToDosLoading />}
+        onEmptyToDos={() => <EmptyToDos />}
+        onEmptySearchResults={
+          (searchText) => 
+          <p>No hay resultados para {searchText}</p>
+        }
 
-        {searchedTodos.map(todo => (
+        // render={todo =>( 
+        //   <ToDoItem
+        //   key={todo.text}
+        //   text={todo.text}
+        //   completed={todo.completed}
+        //   onComplete={() => completeTodo(todo.text)}
+        //   onDelete={() => deleteTodo(todo.text)}
+        //   />
+        >
+
+        { todo =>( 
           <ToDoItem
-            key={todo.text}
-            text={todo.text}
-            completed={todo.completed}
-            onComplete={() => completeTodo(todo.text)}
-            onDelete={() => deleteTodo(todo.text)}
+          key={todo.text}
+          text={todo.text}
+          completed={todo.completed}
+          onComplete={() => completeTodo(todo.text)}
+          onDelete={() => deleteTodo(todo.text)}
           />
-        ))}
-      </ToDoList>
-
+        )}
+      </ ToDoList>
+      
       {!!openModal && (
         <Modal>
           <ToDoForm 
@@ -69,7 +88,8 @@ function App() {
       <CreateToDoButton
         setOpenModal={setOpenModal}
       />
-    </>
+      
+    </React.Fragment>
   );
 }
 
